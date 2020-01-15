@@ -1,17 +1,22 @@
 <template>
-  <main>
+  <div id="app">
     <AppHeader />
-    <router-view></router-view>
-  </main>
+      <main>
+        <router-view></router-view>
+      </main>
+    <AppFooter />
+   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    AppHeader
+    AppHeader,
+    AppFooter
   }
 }
 </script>
@@ -25,11 +30,16 @@ export default {
 }
 #app {
   font-family: sans-serif;
+  background: #f5f5f5;
 }
 main {
-  padding: 0 0 0 0;
+  height: calc(100vh - 16vh);
+  padding: 0 6vw 0 6vw;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 3%;
 }
 
 </style>

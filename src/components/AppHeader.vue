@@ -1,11 +1,11 @@
 <template>
   <header class="header-wrapper">
-    <h2 @click="homePage">
+    <h3 @click="homePage">
       HOME
-    </h2>
-    <h2 @click="toContact">
+    </h3>
+    <h3 @click="toContact">
       Kontakt
-    </h2>
+    </h3>
   </header>
 </template>
 
@@ -13,15 +13,15 @@
 export default {
   name: 'appHeader',
   components: {
-    
+
   },
   methods: {
-      homePage() {
-        this.$router.push({name:"Payment"})
-      },
-       toContact() {
-        this.$router.push({name:"Contact"})
-      },
+    homePage () {
+      this.$router.push({ name: 'Payment' })
+    },
+    toContact () {
+      this.$router.push({ name: 'Contact' })
+    }
   }
 }
 </script>
@@ -31,8 +31,10 @@ export default {
   background-color: grey;
   height: 8vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100vw;
+  color: blue;
+  cursor: pointer;
 }
 </style>

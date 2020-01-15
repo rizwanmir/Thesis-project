@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Payment from './views/Payment.vue'
-import Contact from './views/Contact.vue'
+import Payment from '@/views/Payment.vue'
+import Contact from '@/views/Contact.vue'
 
 Vue.use(Router)
 
@@ -19,7 +19,7 @@ export default new Router({
       path: '/Contact',
       name: 'Contact',
       component: Contact
-    },
-    
+    }
+
   ]
 })
