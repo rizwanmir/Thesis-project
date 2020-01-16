@@ -91,14 +91,14 @@ export default {
 <style scoped lang="less">
 .wrapper {
   background: #fff;
-  padding: 5%;
+  padding: 3vh 10vw 6vh 50px;
   margin-top: 3vh;
 
 }
 .heading  {
   display: flex;
   align-items: center;
-  padding-bottom: 4vh;
+  padding-bottom: 2vh;
 
     img {
       width: 30px;
@@ -111,30 +111,35 @@ export default {
 .payment-radio {
   display: flex;
   justify-content: space-between;
-  padding: 2vh 0 4vh 0;
+  margin: 2vh 0 4vh 0;
+
+    @media (min-width: 1025px) { justify-content: space-around }
 
     .pay-now {
       border: 1px solid grey;
       box-shadow: 0 0 3px #CC0000;
       height: 30px;
-      width: 40vw;
+      width: 38vw;
       padding: 5px;
+
+        @media (min-width: 1025px) { width: 20vw; }
     }
     .pay-later {
       height: 30px;
-      width: 40vw;
+      width: 38vw;
       border: 2px solid grey;
       box-shadow: 0 0 3px #CC0000;
       padding: 5px;
+
+        @media (min-width: 1025px) { width: 20vw; }
     }
     label {
-      padding-left: 3vw;
+      padding-left: 2vw;
     }
 }
 .other-options {
   padding: 10px;
   border: 2px solid #e7e7e7;
-  margin: 1vh 2vw 4vh 0;
 
     .resurs-card {
       display: flex;
@@ -151,7 +156,8 @@ export default {
     }
     p {
       font-size: 0.8em;
-      padding-top: 1vh;
+      padding: 1vh 0 0 5vw;
+
     }
 
   .debit {

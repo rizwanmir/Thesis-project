@@ -19,8 +19,9 @@
 
       <p>Summa 2050,50 :-</p>
     </div>
-
-    <button class="shop-button">Genomför Köp </button>
+    <div class="shop-button">
+      <button>Genomför Köp </button>
+    </div>
 
   </div>
 </template>
@@ -35,7 +36,7 @@ export default {
 <style scoped lang="less">
 .checkout-wrapper {
   background: #fff;
-  padding: 3vh 5vw 8vh 5vw;
+  padding: 3vh 10vw 6vh 50px;
   margin-top: 3vh;
 
     .checkout-heading {
@@ -79,19 +80,26 @@ export default {
       }
     }
   .shop-button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: rgb(97, 88, 180);
     text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    margin-top: 4vh;
-    &:hover {
-      opacity: 0.7;
-    }
+
+      button {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: rgb(97, 88, 180);
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        margin-top: 4vh;
+        border-radius: 4px;
+        &:hover {
+          opacity: 0.7;
+        }
+
+          @media (min-width: 1025px) { width: 50vw; }
+        }
 
   }
 

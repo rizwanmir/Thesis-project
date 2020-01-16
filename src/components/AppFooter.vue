@@ -21,7 +21,6 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top: 2vh;
 
     img {
       width: 100px;

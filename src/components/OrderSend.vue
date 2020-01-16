@@ -14,8 +14,9 @@
     <div class="bills-amount">
       <p>Summa 2050,50 :-</p>
     </div>
-
-    <button class="shop-button">Skicka order </button>
+    <div class="shop-button">
+      <button>Skicka order</button>
+    </div>
 
   </div>
 </template>
@@ -31,7 +32,7 @@ export default {
 .checkout-wrapper {
   background: #fff;
   margin-top: 3vh;
-  padding: 3vh 5vw 8vh 5vw;
+  padding: 3vh 10vw 6vh 50px;
 
     .checkout-heading {
       display: flex;
@@ -61,20 +62,27 @@ export default {
         font-weight: bold;
       }
     }
-  .shop-button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: rgb(97, 88, 180);
+ .shop-button {
     text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    margin-top: 4vh;
-    &:hover {
-      opacity: 0.7;
-    }
+
+      button {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: rgb(97, 88, 180);
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        margin-top: 4vh;
+        border-radius: 4px;
+        &:hover {
+          opacity: 0.7;
+        }
+
+          @media (min-width: 1025px) { width: 50vw; }
+        }
 
   }
 

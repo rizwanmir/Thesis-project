@@ -2,7 +2,7 @@
   <div class="wrapper">
     <p>Komplettera med uppgifter nedan</p>
     <div class="valid-date">
-      <span>Giligtidtid</span>
+      <p>Giligtidtid:</p>
       <input type="date">
     </div>
     <div class="sending-options">
@@ -29,18 +29,23 @@ export default {
 .wrapper {
   padding: 10px;
   border: 2px solid #e7e7e7;
-  margin: 1vh 2vw 4vh 0;
 
     .valid-date {
       padding-top: 2vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
 
         input {
-          margin-left: 3vw;
+
           padding-left: 6vw;
           border: 1px solid grey;
           box-shadow: 0 0 3px #CC0000;
           height: 30px;
           width: 45vw;
+          margin-left: 2vw;
+
+           @media (min-width: 1025px) { width: 20vw; }
         }
     }
     .sending-options {

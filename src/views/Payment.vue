@@ -40,5 +40,10 @@ export default {
 </script>
 
 <style scoped lang="less">
+.wrapper {
 
+  @media (min-width: 1281px) { width: 80vw }
+  @media (min-width: 1025px) and (max-width: 1280px) { width: 90vw }
+  @media (min-width: 768px) and (max-width: 1024px) { width: 100vw }
+}
 </style>
