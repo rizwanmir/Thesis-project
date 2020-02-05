@@ -7,30 +7,30 @@
 
     <div class="payment-radio">
       <div class="pay-now">
-        <input type="radio" name="pay-option" value="A" v-model="selected">
+        <input type="radio" name="pay-option" v-model="payOption" value="payNow">
           <label>Betala nu</label>
       </div>
       <div class="pay-later">
-        <input type="radio" name="pay-option" value="B" v-model="selected">
+        <input type="radio" name="pay-option" v-model="payOption" value="10">
           <label>Betala senare</label>
       </div>
-    </div>
+      </div>
 
-    <div class="other-options" v-show="paymentMethod === 'A'">
+    <div class="other-options" v-show="paymentOption === 'payNow'">
       <div class="resurs-card">
         <div>
-           <input type="radio" name="payment-options">
-            <label>Resurskort</label>
+            <input type="radio" name="payment-options" value="20" v-model="paymentMethod">  <!-- TODO default value checked-->
+            <label>Resurs Faktura</label>
         </div>
         <img src="@/assets/card.svg">
       </div>
       <div class="bills-radio">
         <div class="bills">
           <div>
-            <input type="radio" name="payment-options" checked>
+            <input type="radio" name="payment-options" v-model="paymentMethod" value="3">
               <label>Faktura</label>
           </div>
-          <span class="bills-amount">1250 kr</span>
+          <span class="bills-amount">30 kr</span>
 
         </div>
         <p>
@@ -38,19 +38,19 @@
         </p>
       </div>
       <div class="debit">
-        <input type="radio" name="payment-options">
+        <input type="radio" name="payment-options" v-model="paymentMethod" value="8">
           <label>Debitering</label>
       </div>
       <div class="swish">
         <div>
-          <input type="radio" name="payment-options">
+          <input type="radio" name="payment-options" v-model="paymentMethod" value="13">
             <label>Swish</label>
         </div>
         <img src="@/assets/swish2.png" alt="">
       </div>
     </div>
 
-    <PayLater v-show="paymentMethod === 'B'" />
+    <PayLater v-show="paymentOption === '10'" />
 
   </div>
 </template>
@@ -67,23 +67,34 @@ export default {
 
   methods: {
     ...mapActions([
-      'addPayment'
+      'addPayment',
+      'savePaymentOption'
     ])
   },
 
   computed: {
     ...mapState([
-      'paymentMethod'
+      'paymentMethod',
+      'paymentOption'
     ]),
 
-    selected: {
+    paymentMethod: {
       get () {
         return this.addPayment
       },
       set (value) {
         this.addPayment(value)
       }
+    },
+    payOption: {
+      get () {
+        return this.savePaymentOption
+      },
+      set (value) {
+        this.savePaymentOption(value)
+      }
     }
+
   }
 }
 </script>

@@ -17,18 +17,53 @@
         <span>Fakturavgift: 30 kr</span>
       </div>
 
-      <p>Summa 2050,50 :-</p>
+      <p>Summa {{totalAmount}} :-</p>
     </div>
-    <div class="shop-button">
-      <button>Genomför Köp </button>
-    </div>
+    <!-- <div class="shop-button">
+      <button @click="submitForm">Genomför Köp </button>
+    </div> -->
 
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { apiMakePayment } from '@/api/index.js'
+
 export default {
-  name: 'checkOut'
+  name: 'checkOut',
+
+  computed: {
+    ...mapGetters([
+      'getCustomerInfo'
+    ]),
+
+    totalAmount () {
+      const customerInfoStore = this.getCustomerInfo
+      if (customerInfoStore) {
+        return customerInfoStore.totalAmount
+      } else { return '' }
+    }
+
+  },
+
+  methods: {
+    async submitForm () {
+      let apiData = {
+        arbetsorderNumber: 26281,
+        customerNumber: '',
+        address: '',
+        postNumber: '',
+        city: '',
+        country: '',
+        paymentMethod: 0
+      }
+      let result = await apiMakePayment(apiData)
+      if (result.status) {
+        alert(result.status)
+      }
+    }
+  }
 
 }
 </script>

@@ -12,18 +12,34 @@
     </div>
 
     <div class="bills-amount">
-      <p>Summa 2050,50 :-</p>
+      <p>Summa {{totalAmount}} :-</p>
     </div>
-    <div class="shop-button">
+   <!--  <div class="shop-button">
       <button>Skicka order</button>
-    </div>
+    </div> -->
 
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'orderSend'
+  name: 'orderSend',
+
+  computed: {
+    ...mapGetters([
+      'getCustomerInfo'
+    ]),
+
+    totalAmount () {
+      const customerInfoStore = this.getCustomerInfo
+      if (customerInfoStore) {
+        return customerInfoStore.totalAmount
+      } else { return '' }
+    }
+
+  }
 
 }
 </script>

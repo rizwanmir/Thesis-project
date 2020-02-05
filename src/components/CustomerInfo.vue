@@ -6,26 +6,28 @@
       <span>Hämta kundens uppgifter</span>
     </div>
 
-    <span>Personnummer</span>
+    <span>Arbetsordernummer</span>
     <div class="persons-info">
-      <input type="text" value="" >
+      <input
+        type="text"
+        v-model="kund"
+        @keyup.enter="controlKund"
+      >
     </div>
 
     <span>Kund uppgifter</span>
     <div class="customer-info">
       <span>
-        Rizwan Mir 86021466545
-        Finstastigen 88
-        197 35 Stockholm
-        +463235555
+        {{ customerInfo }}
       </span>
     </div>
 
+<!--
     <div class="edit-data">
       <a href="#">Ändra avgifter</a>
     </div>
 
-    <div class="address-check">
+     <div class="address-check">
       <input type="checkbox" name="adress" v-model="checked">
         <label for="adress">Annan leveranaddress</label>
         <i> &#9432; </i>
@@ -34,14 +36,9 @@
     <div class="change-adress" v-if="checked">
       <p>Fyll i din nya leveransadress</p>
       <form>
-        <label for="name">Nämn</label>
-        <input type="text" name="name" placeholder="Ditt nämn..">
 
         <label for="lname">Postadress</label>
         <input type="text" name="postadress" placeholder="Ditt adress..">
-
-        <label for="lname">Postadress 2</label>
-        <input type="text" name="postadress2" placeholder="Ditt adress..">
 
         <label for="post-number">Postnummer/Ort</label>
           <div class="city-post">
@@ -49,19 +46,53 @@
             <input type="text" name="city" placeholder="Ort..">
           </div>
 
-        <!-- <input type="submit" value="Submit"> -->
       </form>
-    </div>
+    </div> -->
 
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+import { apiFetchCustomerInfo } from '@/api/index'
+
 export default {
   name: 'customerInfo',
   data () {
     return {
-      checked: false
+      //    checked: false,
+      kund: ''
+    }
+  },
+
+  computed: {
+    ...mapGetters([
+      'getCustomerInfo'
+    ]),
+
+    customerInfo () {
+      const customerInfoStore = this.getCustomerInfo
+      if (customerInfoStore) {
+        return 'Personnummer: ' + customerInfoStore.personalNo + 'Customer Number: ' + customerInfoStore.customerNumber +
+        ' Mobilnummer: ' + customerInfoStore.mobileNo + ' Address: ' + customerInfoStore.address +
+        ' ' + customerInfoStore.postNo + ' ' + customerInfoStore.country
+      } else { return '' }
+    }
+
+  },
+
+  methods: {
+    ...mapActions([
+      'saveCustomerInfo'
+    ]),
+
+    async controlKund () {
+      const result = await apiFetchCustomerInfo(this.kund)
+      if (result.status === 200) {
+        this.saveCustomerInfo(result.data)
+      } else {
+        alert(`Cutomer with ${this.kund} not found`)
+      }
     }
   }
 

@@ -5,13 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    paymentMethod: []
+    customerInfo: null,
+    paymentOption: null,
+    paymentMethod: null
 
   },
   mutations: {
-    /* addPayment(state, paymentMethods) {
-      state.selectedPayment.push(paymentMethods)
-    },  */
+    setCustomerInfo (state, customerInfo) {
+      state.customerInfo = customerInfo
+    },
+    setPaymentOption (state, paymentOption) {
+      state.paymentOption = paymentOption
+    },
 
     setPaymentMethod (state, paymentMethod) {
       state.paymentMethod = paymentMethod
@@ -19,11 +24,21 @@ export default new Vuex.Store({
 
   },
   actions: {
+    saveCustomerInfo ({ commit }, customerInfo) {
+      commit('setCustomerInfo', customerInfo)
+    },
+    savePaymentOption ({ commit }, paymentOption) {
+      commit('setPaymentOption', paymentOption)
+    },
+
     addPayment ({ commit }, paymentMethod) {
       commit('setPaymentMethod', paymentMethod)
     }
   },
   getters: {
+    getCustomerInfo: (state) => {
+      return state.customerInfo
+    }
 
   }
 })

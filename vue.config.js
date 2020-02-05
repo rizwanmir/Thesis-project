@@ -7,7 +7,7 @@ module.exports = {
                 fix: true
             });
   },
-  /* devServer: {
-    proxy: ''
-  } */
+   devServer: {
+    proxy: 'http://localhost:7001/'
+  }
 }
