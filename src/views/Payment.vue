@@ -34,7 +34,7 @@
       <PaymentOptions />
 
       <CheckOut v-if="paymentOption === 'payNow'" />
-      <OrderSend v-if="paymentOption === '10'" />
+      <OrderSend v-if="paymentOption === '20'" />
       <div class="shop-button">
         <input
           type="submit"
@@ -86,7 +86,7 @@ export default {
 
     ]),
     isDisabled () {
-      return this.paymentOption === null && this.paymentMethod === null
+      return this.paymentOption !== '20'
     }
 
   },
@@ -211,6 +211,7 @@ export default {
   }
   .isActive {
     opacity: 0.27;
+    cursor: not-allowed;
   }
   }
 

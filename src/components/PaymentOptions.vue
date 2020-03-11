@@ -11,19 +11,19 @@
           <label>Betala nu</label>
       </div>
       <div class="pay-later">
-        <input type="radio" name="pay-option" v-model="payOption" value="10">
-          <label>Betala senare</label>
+        <input type="radio" name="pay-option" v-model="payOption" value="20">
+          <label>Betala med Resurs Faktura</label>
       </div>
       </div>
 
     <div class="other-options" v-show="paymentOption === 'payNow'">
       <div class="resurs-card">
         <div>
-            <input type="radio" name="payment-options" value="20" v-model="paymentMethod">  <!-- TODO default value checked-->
-            <label>Resurs Faktura</label>
+            <input type="radio" name="payment-options" value="7" v-model="paymentMethod">
+            <label>Kort</label>
         </div>
-        <img src="@/assets/card.svg">
-      </div>
+          <img src="@/assets/card.svg">
+        </div>
       <div class="bills-radio">
         <div class="bills">
           <div>
@@ -50,19 +50,19 @@
       </div>
     </div>
 
-    <PayLater v-show="paymentOption === '10'" />
+    <!-- <PayLater v-show="paymentOption === '10'" /> -->
 
   </div>
 </template>
 
 <script>
-import PayLater from '@/components/PayLater.vue'
+// import PayLater from '@/components/PayLater.vue'
 import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'paymentOptions',
   components: {
-    PayLater
+    //   PayLater
   },
 
   methods: {

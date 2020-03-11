@@ -7,7 +7,7 @@
 
     <div class="conditions">
       <span>
-        Getting the order on the phone or email. Getting the order on the phone or email.
+        Click the submit button to to proceed with Resurs Bank
       </span>
     </div>
 
